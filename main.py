@@ -177,7 +177,7 @@ while True:
             print("chatGPT:"+recognized_text)
             response = openai.Completion.create(
                 engine="text-davinci-002",
-                prompt=recognized_text + "auf deutsch",
+                prompt=recognized_text,
                 max_tokens=1024,
                 n=1,
                 stop=None,
