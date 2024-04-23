@@ -13,9 +13,6 @@ over = "xx"
 sh_trigger = "xx"
 sh_over = "xx"
 #-------only tgn_smart_home----------
-import time
-import paho.mqtt.client as mqtt
-from tgnLIB import get_ip
 b1 = ""
 b2 = ""
 b3 = ""
@@ -58,6 +55,9 @@ def ini():
         print("File not found !")
     if tgnSettings == "On":
         print("Load from tgn_smart_home")
+        import time
+        import paho.mqtt.client as mqtt
+        from tgnLIB import get_ip
         try:
             f_d = open("/home/pi/tgn_smart_home/config/system.config","r")
             for line in f_d:
