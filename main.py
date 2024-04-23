@@ -65,34 +65,33 @@ def ini():
                     openai_api_key = line.rstrip().split("_")[1]
         except IOError:
             print("File not found !")
-    client = mqtt.Client("TGN Smart Home")
-    client.connect(get_ip())
-    client.on_message= on_message
-    client.loop_start()
-    client.subscribe([("tgn/#",0)])
-    time.sleep(1)
-    client.loop_stop()
-    spr_phat="/home/pi/tgn_smart_home/language/"+language+"/"
-    try:
-        f_a = open(spr_phat+"voice.lang","r")
-        x = 0
-        for line in f_a:
-            x=x+1
-            if x == 27:
-                speakname = line.rstrip()
-            if x == 28:
-                error = line.rstrip()
-            if x == 29:
-                speak = line.rstrip()
-            if x == 30:
-                over = line.rstrip()
-            if x == 31:
-                sh_trigger = line.rstrip()
-            if x == 32:
-                sh_over = line.rstrip()
-
-    except IOError:
-        print("File not found !")
+        client = mqtt.Client("TGN Smart Home")
+        client.connect(get_ip())
+        client.on_message= on_message
+        client.loop_start()
+        client.subscribe([("tgn/#",0)])
+        time.sleep(1)
+        client.loop_stop()
+        spr_phat="/home/pi/tgn_smart_home/language/"+language+"/"
+        try:
+            f_a = open(spr_phat+"voice.lang","r")
+            x = 0
+            for line in f_a:
+                x=x+1
+                if x == 27:
+                    speakname = line.rstrip()
+                if x == 28:
+                    error = line.rstrip()
+                if x == 29:
+                    speak = line.rstrip()
+                if x == 30:
+                    over = line.rstrip()
+                if x == 31:
+                    sh_trigger = line.rstrip()
+                if x == 32:
+                    sh_over = line.rstrip()
+        except IOError:
+            print("File not found !")
     speakname = speakname.lower()
     openai.api_key = openai_api_key
 
